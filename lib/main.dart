@@ -11,12 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: Column(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: Container(
+        color: Colors.white,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Stack(
@@ -55,22 +57,38 @@ class MyApp extends StatelessWidget {
               children: [
                 Container(
                   color: Colors.cyan,
-                  height: 50,
-                  width: 50,
+                  height: 100,
+                  width: 100,
                 ),
                 Container(
                   color: Colors.pinkAccent,
-                  width: 50,
-                  height: 50,
+                  width: 100,
+                  height: 100,
                 ),
                 Container(
                   color: Colors.blueGrey,
-                  width: 50,
-                  height: 50,
+                  width: 100,
+                  height: 100,
                 )
               ],
-            )
+            ),
+            Container(
+              color: Colors.amber,
+              height: 30,
+              width: 300,
+              child: const Text(
+                "Minecraft",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            ElevatedButton(onPressed: () {}, child: Text("Teste"))
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
