@@ -11,26 +11,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          Container(
-            color: Colors.amber,
-            width: 100,
-            height: 100,
-          ),
-          Container(
-            color: Colors.red,
-            width: 50,
-            height: 50,
-          ),
-        ],
-      ),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              color: Colors.amber,
+              width: 100,
+              height: 100,
+            ),
+            Container(
+              color: Colors.red,
+              width: 50,
+              height: 50,
+            ),
+          ],
+        ));
   }
 }
