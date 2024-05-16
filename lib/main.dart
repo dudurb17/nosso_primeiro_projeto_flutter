@@ -11,90 +11,77 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Tarefas"),
-            backgroundColor: Colors.blue[300],
-          ),
-          body: ListView(
+      title: "Flutter: Primeiros passos",
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Row(
             children: [
-              Task(nome: "Andar de bike"),
-              Task(nome: "Andar de carro"),
-              Task(nome: "Andar de aviao"),
-              Task(nome: "Andar de aviao"),
-            ],
-          ),
-          floatingActionButton: FloatingActionButton(onPressed: () {}),
-        ));
-  }
-}
-
-class Task extends StatefulWidget {
-  final String nome;
-  const Task({super.key, required this.nome});
-
-  @override
-  State<Task> createState() => _TaskState();
-}
-
-class _TaskState extends State<Task> {
-  int nivel = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Stack(
-        children: [
-          Container(
-            color: Colors.blue,
-            height: 140,
-          ),
-          Column(
-            children: [
-              Container(
-                color: Colors.white,
-                height: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      color: Colors.black26,
-                      width: 72,
-                      height: 100,
-                    ),
-                    Container(
-                      width: 200,
-                      child: Text(
-                        widget.nome,
-                        style: const TextStyle(
-                          fontSize: 24,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            nivel++;
-                          });
-                        },
-                        child: const Icon(Icons.arrow_drop_up))
-                  ],
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Icon(
+                  Icons.add_task_outlined,
+                  color: Colors.white,
                 ),
               ),
               Text(
-                "Nivel: $nivel",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              )
+                "Flutter:Primeiros passos",
+                style: TextStyle(color: Colors.white),
+              ),
             ],
-          )
-        ],
+          ),
+          backgroundColor: Colors.blue[200],
+        ),
+        body: const Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Cards(color1: 0xFF7D79D0, color2: 0xFF7D29D0, color3: 0xEA9EF9D0),
+            Cards(color1: 0xEA9EF9D0, color2: 0xFF7D79D0, color3: 0xFF7D29D0),
+            Cards(color1: 0xFF7D29D0, color2: 0xEA9EF9D0, color3: 0xFF7D79D0),
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class Cards extends StatelessWidget {
+  final color1;
+  final color2;
+  final color3;
+  const Cards(
+      {super.key,
+      required this.color1,
+      required this.color2,
+      required this.color3});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(8),
+          child: Container(
+            color: Color(color1),
+            width: 100,
+            height: 150,
+          ),
+        ),
+        Container(
+          color: Color(color2),
+          width: 100,
+          height: 150,
+        ),
+        Container(
+          color: Color(color3),
+          width: 100,
+          height: 150,
+        ),
+      ],
     );
   }
 }
