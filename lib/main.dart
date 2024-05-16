@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
             title: const Text("Tarefas"),
             backgroundColor: Colors.blue[300],
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          body: ListView(
             children: [
               Task(nome: "Andar de bike"),
               Task(nome: "Andar de carro"),
+              Task(nome: "Andar de aviao"),
               Task(nome: "Andar de aviao"),
             ],
           ),
@@ -40,7 +40,8 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.all(8),
       child: Stack(
         children: [
           Container(
@@ -58,7 +59,16 @@ class Task extends StatelessWidget {
                   width: 72,
                   height: 100,
                 ),
-                Text(nome),
+                Container(
+                  width: 200,
+                  child: Text(
+                    nome,
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 ElevatedButton(
                     onPressed: () {}, child: Icon(Icons.arrow_drop_up))
               ],
