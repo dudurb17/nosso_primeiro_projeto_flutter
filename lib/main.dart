@@ -11,77 +11,190 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter: Primeiros passos",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Icon(
-                  Icons.add_task_outlined,
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                "Flutter:Primeiros passos",
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Padding(
+              padding: EdgeInsets.only(left: 32),
+              child: Text(
+                "Tarefas",
                 style: TextStyle(color: Colors.white),
+              ),
+            ),
+            backgroundColor: Colors.blue[300],
+          ),
+          body: ListView(
+            children: [
+              Task(
+                nome: "Andar de bike",
+                foto:
+                    "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
+              ),
+              Task(
+                nome: "Andar de carro",
+                foto:
+                    "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
+              ),
+              Task(
+                nome: "Andar de aviao",
+                foto:
+                    "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
+              ),
+              Task(
+                nome: "Andar de aviao",
+                foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
               ),
             ],
           ),
-          backgroundColor: Colors.blue[200],
-        ),
-        body: const Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Cards(color1: 0xFF7D79D0, color2: 0xFF7D29D0, color3: 0xEA9EF9D0),
-            Cards(color1: 0xEA9EF9D0, color2: 0xFF7D79D0, color3: 0xFF7D29D0),
-            Cards(color1: 0xFF7D29D0, color2: 0xEA9EF9D0, color3: 0xFF7D79D0),
-          ],
-        ),
-      ),
-    );
+          floatingActionButton: FloatingActionButton(onPressed: () {}),
+        ));
   }
 }
 
-class Cards extends StatelessWidget {
-  final color1;
-  final color2;
-  final color3;
-  const Cards(
-      {super.key,
-      required this.color1,
-      required this.color2,
-      required this.color3});
+class Task extends StatefulWidget {
+  final String nome;
+  final String foto;
+  const Task({super.key, required this.nome, required this.foto});
 
   @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  int nivel = 0;
+  @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Padding(
-          padding: EdgeInsets.all(8),
-          child: Container(
-            color: Color(color1),
-            width: 100,
-            height: 150,
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Stack(
+        children: [
+          Container(
+            color: Colors.blue,
+            height: 140,
           ),
-        ),
-        Container(
-          color: Color(color2),
-          width: 100,
-          height: 150,
-        ),
-        Container(
-          color: Color(color3),
-          width: 100,
-          height: 150,
-        ),
-      ],
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                height: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      color: Colors.black26,
+                      width: 72,
+                      height: 100,
+                      child: Image.network(
+                        widget.foto,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 200,
+                          child: Text(
+                            widget.nome,
+                            style: const TextStyle(
+                              fontSize: 24,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.blue[500],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.blue[500],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.blue[100],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.blue[100],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.blue[100],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 70,
+                      width: 70,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            nivel++;
+                          });
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(
+                              Icons.arrow_drop_up,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              "UP",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            )
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Container(
+                      child: LinearProgressIndicator(
+                        color: Colors.white,
+                        value: nivel / 10,
+                      ),
+                      width: 200,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "Nivel: $nivel",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  )
+                ],
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }
