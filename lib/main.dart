@@ -33,20 +33,24 @@ class MyApp extends StatelessWidget {
                 nome: "Andar de bike",
                 foto:
                     "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
+                dificuldade: 4,
               ),
               Task(
                 nome: "Andar de carro",
                 foto:
                     "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
+                dificuldade: 2,
               ),
               Task(
                 nome: "Andar de aviao",
                 foto:
                     "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
+                dificuldade: 1,
               ),
               Task(
                 nome: "Andar de aviao",
                 foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
+                dificuldade: 5,
               ),
             ],
           ),
@@ -58,7 +62,12 @@ class MyApp extends StatelessWidget {
 class Task extends StatefulWidget {
   final String nome;
   final String foto;
-  const Task({super.key, required this.nome, required this.foto});
+  final int dificuldade;
+  const Task(
+      {super.key,
+      required this.nome,
+      required this.foto,
+      required this.dificuldade});
 
   @override
   State<Task> createState() => _TaskState();
@@ -112,27 +121,37 @@ class _TaskState extends State<Task> {
                             Icon(
                               Icons.star,
                               size: 15,
-                              color: Colors.blue[500],
+                              color: widget.dificuldade >= 1
+                                  ? Colors.blue[500]
+                                  : Colors.blue[100],
                             ),
                             Icon(
                               Icons.star,
                               size: 15,
-                              color: Colors.blue[500],
+                              color: widget.dificuldade >= 2
+                                  ? Colors.blue[500]
+                                  : Colors.blue[100],
                             ),
                             Icon(
                               Icons.star,
                               size: 15,
-                              color: Colors.blue[100],
+                              color: widget.dificuldade >= 3
+                                  ? Colors.blue[500]
+                                  : Colors.blue[100],
                             ),
                             Icon(
                               Icons.star,
                               size: 15,
-                              color: Colors.blue[100],
+                              color: widget.dificuldade >= 4
+                                  ? Colors.blue[500]
+                                  : Colors.blue[100],
                             ),
                             Icon(
                               Icons.star,
                               size: 15,
-                              color: Colors.blue[100],
+                              color: widget.dificuldade >= 5
+                                  ? Colors.blue[500]
+                                  : Colors.blue[100],
                             )
                           ],
                         )
