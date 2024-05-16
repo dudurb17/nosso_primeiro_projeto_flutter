@@ -34,10 +34,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final String nome;
   const Task({super.key, required this.nome});
 
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
   @override
   Widget build(BuildContext context) {
     int nivel = 0;
@@ -65,7 +70,7 @@ class Task extends StatelessWidget {
                     Container(
                       width: 200,
                       child: Text(
-                        nome,
+                        widget.nome,
                         style: const TextStyle(
                           fontSize: 24,
                         ),
