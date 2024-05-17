@@ -16,7 +16,19 @@ class Task extends StatefulWidget {
 }
 
 class _TaskState extends State<Task> {
-  int nivel = 0;
+  late double progress;
+  late int nivel;
+  late Color cor;
+
+  @override
+  void initState() {
+    progress = 0;
+    nivel = 0;
+    cor = Colors.blue;
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +38,7 @@ class _TaskState extends State<Task> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: Colors.blue,
+              color: cor,
             ),
             height: 140,
           ),
@@ -79,6 +91,11 @@ class _TaskState extends State<Task> {
                         onPressed: () {
                           setState(() {
                             nivel++;
+
+                            progress = (nivel / widget.dificuldade) / 10;
+                            if (progress > 1) {
+                              cor = Colors.red;
+                            }
                           });
                         },
                         style: ElevatedButton.styleFrom(
@@ -112,9 +129,7 @@ class _TaskState extends State<Task> {
                       width: 200,
                       child: LinearProgressIndicator(
                         color: Colors.white,
-                        value: widget.dificuldade > 0
-                            ? (nivel / widget.dificuldade) / 10
-                            : 1,
+                        value: progress,
                       ),
                     ),
                   ),
