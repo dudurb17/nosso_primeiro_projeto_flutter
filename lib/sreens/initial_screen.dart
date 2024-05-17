@@ -31,25 +31,22 @@ class _InitialScreenState extends State<InitialScreen> {
           children: const [
             Task(
               nome: "Andar de bike",
-              foto:
-                  "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
+              foto: "assets/imagens/dash.png",
               dificuldade: 4,
             ),
             Task(
               nome: "Andar de carro",
-              foto:
-                  "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
+              foto: "assets/imagens/livro.jpg",
               dificuldade: 2,
             ),
             Task(
               nome: "Andar de aviao",
-              foto:
-                  "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
+              foto: "assets/imagens/meditar.jpeg",
               dificuldade: 1,
             ),
             Task(
               nome: "Andar de aviao",
-              foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
+              foto: "assets/imagens/bike.webp",
               dificuldade: 5,
             ),
             SizedBox(
@@ -64,7 +61,7 @@ class _InitialScreenState extends State<InitialScreen> {
             opacidade = !opacidade;
           });
         },
-        child: Icon(Icons.remove_red_eye),
+        child: const Icon(Icons.remove_red_eye),
       ),
     );
   }
