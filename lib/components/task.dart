@@ -59,7 +59,7 @@ class _TaskState extends State<Task> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 200,
                           child: Text(
                             widget.nome,
@@ -72,7 +72,7 @@ class _TaskState extends State<Task> {
                         Difficulty(widget: widget)
                       ],
                     ),
-                    Container(
+                    SizedBox(
                       height: 70,
                       width: 70,
                       child: ElevatedButton(
@@ -81,7 +81,10 @@ class _TaskState extends State<Task> {
                             nivel++;
                           });
                         },
-                        child: Column(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                        ),
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Icon(
@@ -95,9 +98,6 @@ class _TaskState extends State<Task> {
                             )
                           ],
                         ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                        ),
                       ),
                     )
                   ],
@@ -108,21 +108,21 @@ class _TaskState extends State<Task> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Container(
+                    child: SizedBox(
+                      width: 200,
                       child: LinearProgressIndicator(
                         color: Colors.white,
                         value: widget.dificuldade > 0
                             ? (nivel / widget.dificuldade) / 10
                             : 1,
                       ),
-                      width: 200,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Text(
                       "Nivel: $nivel",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   )
                 ],

@@ -28,7 +28,7 @@ class _InitialScreenState extends State<InitialScreen> {
         duration: Duration(milliseconds: 800),
         opacity: opacidade ? 1 : 0,
         child: ListView(
-          children: [
+          children: const [
             Task(
               nome: "Andar de bike",
               foto:
@@ -52,6 +52,9 @@ class _InitialScreenState extends State<InitialScreen> {
               foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
               dificuldade: 5,
             ),
+            SizedBox(
+              height: 80,
+            )
           ],
         ),
       ),

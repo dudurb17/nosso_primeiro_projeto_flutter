@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nosso_primeiro_projeto/sreens/initial_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-
-
 class MyApp extends StatelessWidget {
-  MyApp({super.key}) ;
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +17,6 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(backgroundColor: Colors.blue),
           useMaterial3: true,
         ),
-        home: InitialScreen());
+        home: const InitialScreen());
   }
 }
