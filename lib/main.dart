@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:nosso_primeiro_projeto/difficulty.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +19,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          appBarTheme: const AppBarTheme(backgroundColor: Colors.blue),
           useMaterial3: true,
         ),
         home: Scaffold(
@@ -32,7 +32,6 @@ class _MyAppState extends State<MyApp> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            backgroundColor: Colors.blue[300],
           ),
           body: AnimatedOpacity(
             duration: Duration(milliseconds: 800),
@@ -146,45 +145,7 @@ class _TaskState extends State<Task> {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: widget.dificuldade >= 1
-                                  ? Colors.blue[500]
-                                  : Colors.blue[100],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: widget.dificuldade >= 2
-                                  ? Colors.blue[500]
-                                  : Colors.blue[100],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: widget.dificuldade >= 3
-                                  ? Colors.blue[500]
-                                  : Colors.blue[100],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: widget.dificuldade >= 4
-                                  ? Colors.blue[500]
-                                  : Colors.blue[100],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: widget.dificuldade >= 5
-                                  ? Colors.blue[500]
-                                  : Colors.blue[100],
-                            )
-                          ],
-                        )
+                        Difficulty(widget: widget)
                       ],
                     ),
                     Container(
