@@ -19,12 +19,15 @@ class _TaskState extends State<Task> {
   late double progress;
   late int nivel;
   late Color cor;
+  late int cont;
 
   @override
   void initState() {
     progress = 0;
     nivel = 0;
     cor = Colors.blue;
+    cont = 0;
+
     // TODO: implement initState
     super.initState();
   }
@@ -94,7 +97,23 @@ class _TaskState extends State<Task> {
 
                             progress = (nivel / widget.dificuldade) / 10;
                             if (progress > 1) {
+                              progress = 0;
+                              nivel = 0;
+                              cont++;
+                            }
+
+                            if (cont == 1) {
+                              cor = Colors.green;
+                            } else if (cont == 2) {
+                              cor = Colors.yellow;
+                            } else if (cont == 3) {
+                              cor = Colors.orange;
+                            } else if (cont == 4) {
                               cor = Colors.red;
+                            } else if (cont == 5) {
+                              cor = Colors.purple;
+                            } else if (cont == 6) {
+                              cor = Colors.black;
                             }
                           });
                         },
